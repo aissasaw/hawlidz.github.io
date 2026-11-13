@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="الموقع الرسمي - منصة متكاملة للمقالات، السير الذاتية، والأعمال الفنية والإبداعية.">
-    <title>اسم موقعك الرسمي | الصفحة الرئيسية</title>
+    <meta name="description" content="الموقع الرسمي والمتجر الموسيقي - استمع وحمّل أحدث الأغاني بصيغة MP3 والفيديوهات الموسيقية الحصرية.">
+    <title>فارس عبدلي  | الموقع الرسمي والمتجر الموسيقي</title>
     <style>
-        /* إعدادات الألوان والخطوط الأساسية */
+        /* المتغيرات والألوان الداكنة بأسلوب المنصات العالمية */
         :root {
-            --primary-color: #1e293b;
-            --accent-color: #2563eb;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --border-color: #e2e8f0;
+            --bg-dark: #09090b;
+            --bg-card: #18181b;
+            --bg-card-hover: #27272a;
+            --accent-gold: #eab308;
+            --accent-gold-hover: #ca8a04;
+            --text-light: #fafafa;
+            --text-gray: #a1a1aa;
+            --border-dark: #27272a;
         }
 
         * {
@@ -25,304 +26,361 @@
 
         body {
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.7;
-        }
-
-        /* رأس الصفحة وشريط التنقل */
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        /* شريط التنقل الشفاف فوق الخلفية */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1000;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 75px;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
+        .brand-logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--text-light);
             text-decoration: none;
+            text-transform: uppercase;
         }
 
-        .nav-links {
+        .brand-logo span {
+            color: var(--accent-gold);
+        }
+
+        .nav-menu {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 30px;
         }
 
-        .nav-links a {
+        .nav-menu a {
+            color: var(--text-light);
             text-decoration: none;
-            color: var(--text-main);
             font-weight: 600;
-            transition: color 0.2s;
+            font-size: 0.95rem;
+            transition: color 0.3s;
         }
 
-        .nav-links a:hover,
-        .nav-links a:focus {
-            color: var(--accent-color);
+        .nav-menu a:hover,
+        .nav-menu a:focus {
+            color: var(--accent-gold);
         }
 
-        /* القسم الترحيبي (Hero Section) */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), #334155);
-            color: #ffffff;
-            padding: 80px 20px;
-            text-align: center;
+        /* القسم الافتتاحي بصورة خلفية كبيرة (Hero Banner) */
+        .hero-banner {
+            height: 95vh;
+            min-height: 600px;
+            background: linear-gradient(to bottom, rgba(9, 9, 11, 0.3) 0%, rgba(9, 9, 11, 0.75) 70%, var(--bg-dark) 100%),
+                        url('artist-bg.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 80px;
+            text-align: right;
         }
 
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            line-height: 1.3;
+        .hero-content {
+            max-width: 700px;
         }
 
-        .hero p {
-            font-size: 1.15rem;
-            max-width: 650px;
-            margin: 0 auto 30px;
-            color: #cbd5e1;
-        }
-
-        .btn-primary {
+        .hero-badge {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: #ffffff;
-            padding: 12px 28px;
+            background-color: var(--accent-gold);
+            color: #000000;
+            font-weight: 800;
+            font-size: 0.8rem;
+            padding: 5px 14px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #d4d4d8;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: #000000;
+            padding: 14px 32px;
             border-radius: 8px;
+            font-weight: 800;
             text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-light);
+            padding: 12px 30px;
+            border-radius: 8px;
             font-weight: 700;
+            text-decoration: none;
+            transition: border-color 0.3s, background-color 0.3s;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-light);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* تنسيق الأقسام العامة */
+        section {
+            padding: 70px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-dark);
+            padding-bottom: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        /* متجر الأغاني MP3 */
+        .mp3-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .track-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-dark);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            transition: background-color 0.3s;
+        }
+
+        .track-item:hover {
+            background-color: var(--bg-card-hover);
+        }
+
+        .track-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-width: 240px;
+        }
+
+        .track-cover {
+            width: 65px;
+            height: 65px;
+            border-radius: 8px;
+            object-fit: cover;
+            background-color: #27272a;
+        }
+
+        .track-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .track-meta {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .track-player {
+            flex-grow: 1;
+            max-width: 400px;
+        }
+
+        audio {
+            width: 100%;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        .track-action {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .price-tag {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+        }
+
+        .btn-buy {
+            background-color: var(--accent-gold);
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
             transition: background-color 0.2s;
         }
 
-        .btn-primary:hover {
-            background-color: #1d4ed8;
+        .btn-buy:hover {
+            background-color: var(--accent-gold-hover);
         }
 
-        /* المحتوى الرئيسي والمقالات */
-        main {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: var(--primary-color);
-            border-right: 4px solid var(--accent-color);
-            padding-right: 12px;
-        }
-
-        .articles-grid {
+        /* متجر ومعرض الفيديوهات الموسيقية */
+        .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
         }
 
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+        .video-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-dark);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
             display: flex;
             flex-direction: column;
         }
 
-        .card-img {
+        .video-wrapper {
+            position: relative;
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background-color: #e2e8f0;
+            background-color: #000000;
         }
 
-        .card-body {
+        .video-wrapper video {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-details {
             padding: 20px;
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
+            flex-grow: 1;
         }
 
-        .card-category {
-            font-size: 0.85rem;
-            color: var(--accent-color);
+        .video-title {
+            font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 8px;
         }
 
-        .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-            color: var(--text-main);
-        }
-
-        .card-text {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+        .video-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
             margin-bottom: 20px;
             flex-grow: 1;
         }
 
-        .card-link {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 700;
-            align-self: flex-start;
-        }
-
-        .card-link:hover {
-            text-decoration: underline;
-        }
-
-        /* تذييل الصفحة (Footer) */
-        footer {
-            background-color: var(--primary-color);
-            color: #cbd5e1;
-            padding: 50px 0 25px;
-            margin-top: 40px;
-        }
-
-        .footer-content {
+        .video-footer {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
-            gap: 30px;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 30px;
-            margin-bottom: 20px;
+            align-items: center;
+            border-top: 1px solid var(--border-dark);
+            padding-top: 15px;
         }
 
-        .footer-info h3 {
-            color: #ffffff;
-            margin-bottom: 10px;
+        /* التذييل (Footer) */
+        footer {
+            background-color: #050507;
+            border-top: 1px solid var(--border-dark);
+            padding: 50px 0 30px;
+            margin-top: 60px;
+            color: var(--text-gray);
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
         .footer-links {
-            list-style: none;
             display: flex;
-            flex-wrap: wrap;
+            list-style: none;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
-            color: #cbd5e1;
+            color: var(--text-gray);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .footer-links a:hover {
-            color: #ffffff;
-            text-decoration: underline;
+            color: var(--accent-gold);
         }
 
-        .copyright {
+        .footer-bottom {
             text-align: center;
-            font-size: 0.9rem;
-            color: #94a3b8;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-dark);
+            padding-top: 20px;
         }
 
-        /* التجاوب مع شاشات الهواتف */
+        /* التجاوب مع الشاشات الصغيرة */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
                 height: auto;
                 padding: 15px 0;
-                gap: 15px;
+                gap: 10px;
             }
-            .hero h1 {
-                font-size: 1.9rem;
+            .hero-content h1 {
+                font-size: 2.3rem;
             }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- رأس الصفحة والقائمة الرئيسية -->
-    <header>
-        <div class="container navbar">
-            <a href="index.html" class="logo" aria-label="العودة إلى الصفحة الرئيسية">اسم الموقع</a>
-            <nav aria-label="القائمة الرئيسية">
-                <ul class="nav-links">
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="#articles">المقالات</a></li>
-                    <li><a href="about.html">من نحن</a></li>
-                    <li><a href="contact.html">اتصل بنا</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- القسم الترحيبي -->
-    <section class="hero" aria-labelledby="hero-heading">
-        <div class="container">
-            <h1 id="hero-heading">مرحباً بكم في منصتنا الرسمية</h1>
-            <p>مساحة مخصصة لتوثيق التاريخ، السير الذاتية، والمحتوى الثقافي والفني الموثوق بأسلوب عصري واحترافي.</p>
-            <a href="#articles" class="btn-primary">استكشف أحدث المقالات</a>
-        </div>
-    </section>
-
-    <!-- المحتوى الرئيسي -->
-    <main class="container" id="articles">
-        <h2 class="section-title">أحدث المنشورات والمقالات</h2>
+            .track-item {
+                flex-direction: column;
         
-        <div class="articles-grid">
-            <!-- البطاقة الأولى -->
-            <article class="card">
-                <img src="placeholder1.jpg" alt="صورة توضيحية للمقال الأول" class="card-img">
-                <div class="card-body">
-                    <span class="card-category">تاريخ وتراجم</span>
-                    <h3 class="card-title">عنوان المقال الأول يكتب هنا بوضوح</h3>
-                    <p class="card-text">مقتطف قصير ومشوق يلخص محتوى المقال ويشجع الزائر على قراءة التفاصيل الكاملة.</p>
-                    <a href="article1.html" class="card-link" aria-label="اقرأ المزيد حول عنوان المقال الأول">اقرأ المقال كاملاً &larr;</a>
-                </div>
-            </article>
-
-            <!-- البطاقة الثانية -->
-            <article class="card">
-                <img src="placeholder2.jpg" alt="صورة توضيحية للمقال الثاني" class="card-img">
-                <div class="card-body">
-                    <span class="card-category">أعمال وإبداع</span>
-                    <h3 class="card-title">عنوان المقال الثاني يكتب هنا بوضوح</h3>
-                    <p class="card-text">مقتطف قصير ومشوق يلخص محتوى المقال ويشجع الزائر على قراءة التفاصيل الكاملة.</p>
-                    <a href="article2.html" class="card-link" aria-label="اقرأ المزيد حول عنوان المقال الثاني">اقرأ المقال كاملاً &larr;</a>
-                </div>
-            </article>
-
-            <!-- البطاقة الثالثة -->
-            <article class="card">
-                <img src="placeholder3.jpg" alt="صورة توضيحية للمقال الثالث" class="card-img">
-                <div class="card-body">
-                    <span class="card-category">ثقافة وفن</span>
-                    <h3 class="card-title">عنوان المقال الثالث يكتب هنا بوضوح</h3>
-                    <p class="card-text">مقتطف قصير ومشوق يلخص محتوى المقال ويشجع الزائر على قراءة التفاصيل الكاملة.</p>
-                    <a href="article3.html" class="card-link" aria-label="اقرأ المزيد حول عنوان المقال الثالث">اقرأ المقال كاملاً &larr;</a>
-                </div>
-            </article>
-        </div>
-    </main>
-
-    <!-- تذييل الصفحة -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>اسم الموقع</h3>
-                    <p>منصة رقمية ملتزمة بأعلى معايير الجودة والموثوقية.</p>
-                </div>
-                <nav aria-label="روابط قانونية ومعلومات">
-                    <ul class="footer-links">
-                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
-                        
