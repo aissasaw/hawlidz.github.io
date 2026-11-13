@@ -1,30 +1,328 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>aissasaw | RAP TITAN 2026</title>
-<style>
-body{background:#0a0a0a;color:#fff;font-family:sans-serif;padding:20px;text-align:center}
-h1{font-size:40px} span{color:#ff3b30}
-.bio{background:#fff;color:#000;padding:15px;border-radius:15px;margin:20px 0;line-height:1.7;border-right:5px solid #ff3b30;text-align:right}
-.btn{background:#ff3b30;color:#fff;padding:12px 25px;border-radius:30px;text-decoration:none;display:inline-block;margin:5px;font-weight:bold}
-.card{background:#141414;border:1px solid #222;border-radius:15px;padding:20px;margin-top:20px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الموقع الرسمي - منصة متكاملة للمقالات، السير الذاتية، والأعمال الفنية والإبداعية.">
+    <title>اسم موقعك الرسمي | الصفحة الرئيسية</title>
+    <style>
+        /* إعدادات الألوان والخطوط الأساسية */
+        :root {
+            --primary-color: #1e293b;
+            --accent-color: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* رأس الصفحة وشريط التنقل */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--accent-color);
+        }
+
+        /* القسم الترحيبي (Hero Section) */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), #334155);
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: #cbd5e1;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* المحتوى الرئيسي والمقالات */
+        main {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            border-right: 4px solid var(--accent-color);
+            padding-right: 12px;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #e2e8f0;
+        }
+
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-category {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .card-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 700;
+            align-self: flex-start;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* تذييل الصفحة (Footer) */
+        footer {
+            background-color: var(--primary-color);
+            color: #cbd5e1;
+            padding: 50px 0 25px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-info h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        /* التجاوب مع شاشات الهواتف */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>ALGERIAN RAP <span>TITAN</span> 2026</h1>
-<p>+198M استماع | 4,120,800 مستمع | #1 🇩🇿</p>
-<div class="bio">
-من أزقة باب الواد وساحات العاصمة الشامخة أمام مقام الشهيد، انطلق aissasaw حاملاً صوته وقضايا الشباب الجزائري في فلو حاد وإيقاعات درل وتراب ثقيلة. يجمع بين أصالة الحومة وروح الراب الثوري العصري ليعبر عن الواقع بجرأة وشغف لا يتوقف.
-</div>
-<a class="btn" href="https://audiomack.com/aissasaw">Audiomack</a>
-<a class="btn" href="https://open.spotify.com/search/aissasaw">Spotify</a>
-<div class="card">
-<h3>🎤 مولد القوافي AI Bars</h3>
-<p style="color:#aaa">موقعك راهو خدام ضرك!</p>
-<p>aissasaw.is-a.dev</p>
-</div>
-<footer style="margin-top:30px;color:#666">aissasaw © 2026 - باب الواد</footer>
-</body>
-</html>
+
+    <!-- رأس الصفحة والقائمة الرئيسية -->
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo" aria-label="العودة إلى الصفحة الرئيسية">اسم الموقع</a>
+            <nav aria-label="القائمة الرئيسية">
+                <ul class="nav-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="#articles">المقالات</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- القسم الترحيبي -->
+    <section class="hero" aria-labelledby="hero-heading">
+        <div class="container">
+            <h1 id="hero-heading">مرحباً بكم في منصتنا الرسمية</h1>
+            <p>مساحة مخصصة لتوثيق التاريخ، السير الذاتية، والمحتوى الثقافي والفني الموثوق بأسلوب عصري واحترافي.</p>
+            <a href="#articles" class="btn-primary">استكشف أحدث المقالات</a>
+        </div>
+    </section>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container" id="articles">
+        <h2 class="section-title">أحدث المنشورات والمقالات</h2>
+        
+        <div class="articles-grid">
+            <!-- البطاقة الأولى -->
+            <article class="card">
+                <img src="placeholder1.jpg" alt="صورة توضيحية للمقال الأول" class="card-img">
+                <div class="card-body">
+                    <span class="card-category">تاريخ وتراجم</span>
+                    <h3 class="card-title">عنوان المقال الأول يكتب هنا بوضوح</h3>
+                    <p class="card-text">مقتطف قصير ومشوق يلخص محتوى المقال ويشجع الزائر على قراءة التفاصيل الكاملة.</p>
+                    <a href="article1.html" class="card-link" aria-label="اقرأ المزيد حول عنوان المقال الأول">اقرأ المقال كاملاً &larr;</a>
+                </div>
+            </article>
+
+            <!-- البطاقة الثانية -->
+            <article class="card">
+                <img src="placeholder2.jpg" alt="صورة توضيحية للمقال الثاني" class="card-img">
+                <div class="card-body">
+                    <span class="card-category">أعمال وإبداع</span>
+                    <h3 class="card-title">عنوان المقال الثاني يكتب هنا بوضوح</h3>
+                    <p class="card-text">مقتطف قصير ومشوق يلخص محتوى المقال ويشجع الزائر على قراءة التفاصيل الكاملة.</p>
+                    <a href="article2.html" class="card-link" aria-label="اقرأ المزيد حول عنوان المقال الثاني">اقرأ المقال كاملاً &larr;</a>
+                </div>
+            </article>
+
+            <!-- البطاقة الثالثة -->
+            <article class="card">
+                <img src="placeholder3.jpg" alt="صورة توضيحية للمقال الثالث" class="card-img">
+                <div class="card-body">
+                    <span class="card-category">ثقافة وفن</span>
+                    <h3 class="card-title">عنوان المقال الثالث يكتب هنا بوضوح</h3>
+                    <p class="card-text">مقتطف قصير ومشوق يلخص محتوى المقال ويشجع الزائر على قراءة التفاصيل الكاملة.</p>
+                    <a href="article3.html" class="card-link" aria-label="اقرأ المزيد حول عنوان المقال الثالث">اقرأ المقال كاملاً &larr;</a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>اسم الموقع</h3>
+                    <p>منصة رقمية ملتزمة بأعلى معايير الجودة والموثوقية.</p>
+                </div>
+                <nav aria-label="روابط قانونية ومعلومات">
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        
