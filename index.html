@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجر اكسسوار نسائي</title>
+<title>حولي - اكسسوار نسائي</title>
 <style>
 *{box-sizing:border-box;font-family:Arial} body{margin:0;background:#fff5f7;color:#333}
 header{padding:24px;text-align:center;background:#ff5c8a;color:#fff}
-header h1{margin:0;font-size:32px} header p{color:#fff;opacity:.9}
+header h1{margin:0;font-size:38px} header p{color:#fff;opacity:.9}
 .box{max-width:480px;margin:20px auto;background:#fff;padding:20px;border-radius:20px;box-shadow:0 5px 25px rgba(255,92,138,.15);border:1px solid #ffe0e8}
 input,select{width:100%;padding:13px;margin:8px 0;border-radius:12px;border:1px solid #ffd0dc;font-size:16px}
 button{width:100%;padding:15px;background:#ff5c8a;color:#fff;border:none;border-radius:14px;font-size:19px;font-weight:bold;cursor:pointer}
@@ -20,9 +20,9 @@ button{width:100%;padding:15px;background:#ff5c8a;color:#fff;border:none;border-
 </style>
 </head>
 <body>
-<header><h1>💍 متجر زينة</h1><p>اكسسوار نسائي أنيق | توصيل 58 ولاية | الدفع عند الاستلام</p></header>
+<header><h1>💍 حولي</h1><p>اكسسوار نسائي أنيق | توصيل 58 ولاية | الدفع عند الاستلام</p></header>
 <div class="box">
-<h2 style="text-align:center;margin-top:0">✨ اختاري الزينة تاعك</h2>
+<h2 style="text-align:center;margin-top:0">✨ اختاري الحولي تاعك</h2>
 <div class="grid">
 <div class="opt active" onclick="selectP(this,'خاتم')"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500"><b>💍 خاتم</b></div>
 <div class="opt" onclick="selectP(this,'سلسلة / قلادة')"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500"><b>📿 سلسلة</b></div>
@@ -33,4 +33,30 @@ button{width:100%;padding:15px;background:#ff5c8a;color:#fff;border:none;border-
 </div>
 <div class="note">💬 <b>السعر يتأكد معاك بالتلفون</b><br>اطلبي ضرك و نعيطولك نأكدولك</div>
 <input id="name" placeholder="الاسم الكامل">
-<input id
+<input id="phone" placeholder="رقم الهاتف - 0550123456">
+<select id="wilaya"><option value="">اختر الولاية</option><option>01 - الجزائر</option><option>02 - وهران</option><option>03 - قسنطينة</option><option>04 - عنابة</option><option>05 - سطيف</option><option>06 - ورقلة</option><option>07 - البليدة</option><option>08 - بجاية</option><option>09 - تيزي وزو</option><option>10 - تلمسان</option><option>16 - الجزائر</option><option>19 - سطيف</option><option>31 - وهران</option><option>25 - قسنطينة</option><option>ولاية أخرى</option></select>
+<input id="commune" placeholder="البلدية / العنوان">
+<select id="qty"><option value="1">1 قطعة</option><option value="2">2 قطعة</option><option value="3">3 قطعة</option></select>
+<button onclick="sendOrder()">اطلبي الآن 💖</button>
+<div id="msg"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+let curProduct="خاتم";
+function selectP(el,name){document.querySelectorAll('.opt').forEach(o=>o.classList.remove('active'));el.classList.add('active');curProduct=name;}
+const supabase = window.supabase.createClient("https://tydxwljcztampmvmdvxu.supabase.co","sb_publishable_pFTCzydUeQYmc1CzqGV3MQ_l_PAjPvC");
+async function sendOrder(){
+  const name=document.getElementById('name').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const wilaya=document.getElementById('wilaya').value;
+  const commune=document.getElementById('commune').value.trim();
+  const qty=parseInt(document.getElementById('qty').value);
+  if(!name||!phone||!wilaya||!commune){document.getElementById('msg').innerText="⚠️ عمري كامل الخانات";document.getElementById('msg').style.color="red";return;}
+  document.getElementById('msg').innerText="جاري إرسال طلبك...";
+  const {error}=await supabase.from('orders').insert([{customer_name:name,phone:phone,wilaya:wilaya,commune:commune,product:curProduct,quantity:qty,total_price:0,status:"new"}]);
+  if(error){document.getElementById('msg').innerText="❌ خطأ: "+error.message;}
+  else{document.getElementById('msg').innerText="✅ تم استلام طلبك! راح نعيطولك نأكدولك السعر";document.getElementById('msg').style.color="green";}
+}
+</script>
+</body>
+</html>
