@@ -343,7 +343,66 @@
         }
     </style>
 </head>
-<body>
+<body> <!-- ===== التسجيل - فارس عبدلي ===== -->
+<div id="auth-box" style="max-width:400px; margin:30px auto; background:#111; padding:25px; border-radius:15px; border:1px solid #eab308; color:#fff; font-family:Arial; text-align:right; direction:rtl;">
+  <h2 style="text-align:center; color:#eab308;">سجل في موقع فارس عبدلي</h2>
+  <p style="text-align:center; font-size:14px; color:#aaa;">سجل باش تقدر تشري و تحمل MP3</p>
+
+  <input id="name" type="text" placeholder="اسمك" style="width:100%; padding:12px; margin:8px 0; border-radius:8px; border:none; background:#222; color:#fff;">
+  <input id="email" type="email" placeholder="الايميل" style="width:100%; padding:12px; margin:8px 0; border-radius:8px; border:none; background:#222; color:#fff;">
+  <input id="password" type="password" placeholder="كلمة السر" style="width:100%; padding:12px; margin:8px 0; border-radius:8px; border:none; background:#222; color:#fff;">
+
+  <button onclick="signUp()" style="width:100%; padding:12px; background:#eab308; border:none; border-radius:8px; font-weight:bold; cursor:pointer; margin-top:10px;">سجل حساب جديد</button>
+  <button onclick="signIn()" style="width:100%; padding:12px; background:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer; margin-top:8px;">عندك حساب؟ ادخل</button>
+  <button onclick="signInGoogle()" style="width:100%; padding:12px; background:#222; color:#fff; border:1px solid #444; border-radius:8px; cursor:pointer; margin-top:8px;">سجل بـ Google</button>
+
+  <p id="auth-msg" style="text-align:center; margin-top:12px; font-size:14px; color:#eab308;"></p>
+  <p id="user-info" style="text-align:center; font-size:14px;"></p>
+  <button id="logout-btn" onclick="logOut()" style="display:none; width:100%; padding:10px; background:red; color:#fff; border:none; border-radius:8px; cursor:pointer; margin-top:10px;">خروج</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ===== حط هنا معلوماتك من Supabase =====
+  const SUPABASE_URL = "حط هنا Project URL تاعك";
+  const SUPABASE_KEY = "حط هنا anon public key تاعك";
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  async function signUp(){
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const { data, error } = await supabaseClient.auth.signUp({ email, password, options:{ data:{ full_name:name } } });
+    document.getElementById('auth-msg').innerText = error ? "خطأ: " + error.message : "تم التسجيل! روح للايميل تاعك و أكد الحساب";
+  }
+
+  async function signIn(){
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+    if(error){ document.getElementById('auth-msg').innerText = "خطأ: " + error.message; }
+    else{ document.getElementById('auth-msg').innerText = "مرحبا بيك " + (data.user.user_metadata.full_name || data.user.email); showUser(); }
+  }
+
+  async function signInGoogle(){
+    await supabaseClient.auth.signInWithOAuth({ provider:'google' });
+  }
+
+  async function logOut(){
+    await supabaseClient.auth.signOut();
+    location.reload();
+  }
+
+  async function showUser(){
+    const { data } = await supabaseClient.auth.getUser();
+    if(data.user){
+      document.getElementById('user-info').innerText = "راك مسجل كـ: " + (data.user.user_metadata.full_name || data.user.email);
+      document.getElementById('logout-btn').style.display = "block";
+    }
+  }
+  showUser();
+</script>
+<!-- ===== نهاية التسجيل ===== -->
 
     <header>
         <div class="container navbar">
