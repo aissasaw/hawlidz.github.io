@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hawli Dzad - حولي دزاد - اكسسوار نسائي</title>
+<title>حولي دزاد - اكسسوار نسائي</title>
 <style>
 *{box-sizing:border-box;font-family:Arial} body{margin:0;background:#fff5f7;color:#333}
 header{padding:24px;text-align:center;background:#ff5c8a;color:#fff}
@@ -20,16 +20,16 @@ button{width:100%;padding:15px;background:#ff5c8a;color:#fff;border:none;border-
 </style>
 </head>
 <body>
-<header><h1>💍 حولي</h1><p>اكسسوار نسائي أنيق | توصيل 58 ولاية | الدفع عند الاستلام</p></header>
+<header><h1>💍 حولي دزاد</h1><p>اكسسوار نسائي أنيق | ساعات + خواتم | توصيل 58 ولاية</p></header>
 <div class="box">
 <h2 style="text-align:center;margin-top:0">✨ اختاري الحولي تاعك</h2>
 <div class="grid">
-<div class="opt active" onclick="selectP(this,'خاتم')"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500"><b>💍 خاتم</b></div>
+<div class="opt active" onclick="selectP(this,'ساعة نسائية')"><img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=500"><b>⌚ ساعة نسائية</b></div>
+<div class="opt" onclick="selectP(this,'خاتم')"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500"><b>💍 خاتم</b></div>
 <div class="opt" onclick="selectP(this,'سلسلة / قلادة')"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500"><b>📿 سلسلة</b></div>
 <div class="opt" onclick="selectP(this,'حلق / أقراط')"><img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500"><b>✨ حلق</b></div>
 <div class="opt" onclick="selectP(this,'اسوارة / براسلي')"><img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=500"><b>💫 اسوارة</b></div>
-<div class="opt" onclick="selectP(this,'طقم كامل - خاتم + سلسلة + حلق')"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500"><b>🎁 طقم كامل</b></div>
-<div class="opt" onclick="selectP(this,'بروش / دبوس')"><img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=500"><b>🌸 بروش</b></div>
+<div class="opt" onclick="selectP(this,'طقم كامل - ساعة + خاتم + سلسلة')"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500"><b>🎁 طقم كامل</b></div>
 </div>
 <div class="note">💬 <b>السعر يتأكد معاك بالتلفون</b><br>اطلبي ضرك و نعيطولك نأكدولك</div>
 <input id="name" placeholder="الاسم الكامل">
@@ -42,7 +42,7 @@ button{width:100%;padding:15px;background:#ff5c8a;color:#fff;border:none;border-
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-let curProduct="خاتم";
+let curProduct="ساعة نسائية";
 function selectP(el,name){document.querySelectorAll('.opt').forEach(o=>o.classList.remove('active'));el.classList.add('active');curProduct=name;}
 const supabase = window.supabase.createClient("https://tydxwljcztampmvmdvxu.supabase.co","sb_publishable_pFTCzydUeQYmc1CzqGV3MQ_l_PAjPvC");
 async function sendOrder(){
